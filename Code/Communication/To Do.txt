@@ -1,0 +1,25 @@
+Connect to Laptop and ESP32 using WiFi, transmit and receive cam, position
+and sensor data between ESPs and also onto laptop
+
+Checkpoint 1  -- Done
+Was able to use sample C code to stream video onto a local IP. This IP
+address can be pasted on a browser to watch the stream.
+
+Checkpoint 2
+Send messages from ESP32 and receive them on laptop
+
+Checkpoint 3
+Stream video from ESP32 and receive them on laptop without using sample
+code.
+
+Checkpoint 4
+Send sensor and Cam data to laptop
+
+Checkpoint 5
+Send messages to other ESPs
+
+Checkpoint 6
+Send message, ultrasound sensor data and Cam data to laptop
+
+Checkpoint 7
+Receive only message and process it

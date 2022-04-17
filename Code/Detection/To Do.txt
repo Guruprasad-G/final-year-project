@@ -1,0 +1,26 @@
+Write code for obtaining CAM data and recoginising target and obstacles
+using custom vision or image processing.
+
+ a) How to detect custom objects?
+ -> Discovered that tensor flow will be helpful. i.e :- We need to take 
+several pics of object to be detected, label data and keep it in google 
+cloud, use this (https://goo.gle/3ocbqmI) code to train an ML model, and 
+in the same code, the model is built as a .tflite file.
+This file needs to be transferred to the MC for object detection.
+ 
+ b) Need to figure out how to connect laptop with MC for code transferring.
+ -> Using Arduino - https://www.youtube.com/watch?v=q-KIpFIbRMk
+    Need to Retry (Should work)
+ -> Using Serial Transfer Module - 
+    https://randomnerdtutorials.com/program-upload-code-esp32-cam/
+    Tried and tested
+ -> Note: Keep holding the reset button as code compiles to around 75 % 
+    and let go of it only when you see the "connecting..."
+
+ c) Need to figure out which IDE to use to code.
+ -> Arduino IDE with ESP extension works so far.
+
+ d) Need to figure out how to run .tflite on MC (library installation).
+
+ e) Need to figure out how to provide input (cam data) and obtain output
+(boolean) from the tf file in MC.

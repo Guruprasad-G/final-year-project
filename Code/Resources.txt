@@ -1,0 +1,9 @@
+How to program ESP32 using Arduino Uno
+https://randomnerdtutorials.com/program-upload-code-esp32-cam/#:~:text=Install%20the%20ESP32%20Add%2Don,ESP32%20Board%20in%20Arduino%20IDE
+https://create.arduino.cc/projecthub/noah_arduino/using-esp32-cam-with-arduino-b4f12c
+
+Check for target or obstacle using cam:
+https://www.mygreatlearning.com/blog/yolo-object-detection-using-opencv/
+https://github.com/caleb221/ESP32-Leaf - Code is in C
+https://randomnerdtutorials.com/esp32-cam-opencv-js-color-detection-tracking/
+ - Colour detection of an object

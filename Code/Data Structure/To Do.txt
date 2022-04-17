@@ -1,0 +1,14 @@
+Write code for Graph data structure and nodes
+
+Checkpoint 1
+Write Python code for Graph
+
+Checkpoint 2
+Implement a pretty print
+
+Checkpoint 3
+Write an alternate C code for Graph with pretty print
+
+Checkpoint 4
+Based on sensor values (simulated maybe) configure node connections
+

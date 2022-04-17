@@ -1,0 +1,91 @@
+1) Write code for Graph data structure and nodes...
+ -> Wrote code for Graph data structure and a pretty print method
+
+2) Connect to Laptop and ESP32 using WiFi.
+ a) Connect and Stream Cam video. (Checkpoint 1)
+ -> Done using sample code.
+
+3) Write code for obtaining CAM data and recoginising target and obstacles
+using custom vision or image processing.
+
+ a) How to detect custom objects?
+ -> Discovered that tensor flow will be helpful. i.e :- We need to take 
+several pics of object to be detected, label data and keep it in google 
+cloud, use this (https://goo.gle/3ocbqmI) code to train an ML model, and 
+in the same code, the model is built as a .tflite file.
+This file needs to be transferred to the MC for object detection.
+ 
+ b) Need to figure out how to connect laptop with MC for code transferring.
+ -> Using Arduino - https://www.youtube.com/watch?v=q-KIpFIbRMk
+    Need to Retry (Should work)
+ -> Using Serial Transfer Module - 
+    https://randomnerdtutorials.com/program-upload-code-esp32-cam/
+    Tried and tested
+ -> Note: Keep holding the reset button as code compiles to around 75 % 
+    and let go of it only when you see the "connecting..."
+
+ c) Need to figure out which IDE to use to code.
+ -> Arduino IDE with ESP extension works so far.
+
+ d) Need to figure out how to run .tflite on MC (library installation).
+
+ e) Need to figure out how to provide input (cam data) and obtain output
+(boolean) from the tf file in MC.
+
+
+4) Write code for interfacing Ultrasound sensor with robot to find distances.
+5) Write code for movement.
+
+ a) Can we bypass and connect N20 Motor directly to ESP32 and drive it?
+ -> Not sure yet. 
+ -> Found that you can drive any motor using PWM, but even if voltage 
+    matches, the current usually will not match. Because MCs use it in the
+    order of mA to uA. Whereas motors require it to be in order of 0. Amps
+
+ b) If we are using motor drivers, then which one to use?
+ -> 
+
+6) Integrate code. 
+
+
+Problem : MC heating issue
+Solution :
+
+Problem : GPS does not give accurate postion in small arenas.
+Solution : I am giving the robots the arena size and 
+it's node position with respect to the arena. (Now this can be configured
+dynamically depending on the size of arena, but the node postion on where
+I am deploying the robot needs to be given)
+What we can say: Since GPS gives position accurate upto say 30m, we might
+have to build a large arena to test it. Therefore we are giving away the 
+node postion to the robot at the start.
+
+
+Inside robot:
+
+Initialize robot node position and arena size
+//Robot Calculates node distances automatically.
+superloop
+update robot postion locally
+broadcast robot position
+receive other robot position
+check for target using cam/sensor
+if target found transmit target found message and exit
+rotate and check/check sensor values
+update graph connections
+broadcast graph connections/unicast it to nearby bot and laptop
+decide where to move next
+apply corresponding motor signal to move
+
+
+1 - 
+2 - 36
+3 - 36
+4 - 69
+5 - 23
+
+
+
+
+
+
