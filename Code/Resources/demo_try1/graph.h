@@ -20,7 +20,7 @@ void initialize_graph()
 void connect_node(int n1, int direction, int sensor_val, int orientation)
 {
     int i,j,n2;
-    if(sensor_val > threshold_val)
+    if(sensor_val < threshold_val)
     {
         return;
     }
@@ -35,41 +35,57 @@ void connect_node(int n1, int direction, int sensor_val, int orientation)
     {
         case u:
             n2 = n1-n;
+            if(n2 < 1)
+            return;
             //printf("%d U %d -> %d D %d\n",n1,n2,n2,n1);
             graph[n2][d] = n1;
             break;
         case ur:
             n2 = n1-n+1;
+            if(n2 < 1)
+            return;
             //printf("%d UR %d -> %d DL %d\n",n1,n2,n2,n1);
             graph[n2][dl] = n1;
             break;
         case r:
             n2 = n1+1;
+            if(n2 < 1)
+            return;
             //printf("%d R %d -> %d L %d\n",n1,n2,n2,n1);
             graph[n2][l] = n1;
             break;
         case dr:
             n2 = n1+n+1;
+            if(n2 < 1)
+            return;
             //printf("%d DR %d -> %d UL %d\n",n1,n2,n2,n1);
             graph[n2][ul] = n1;
             break;
         case d:
             n2 = n1+n;
+            if(n2 < 1)
+            return;
             //printf("%d D %d -> %d U %d\n",n1,n2,n2,n1);
             graph[n2][u] = n1;
             break;
         case dl:
             n2 = n1+n-1;
+            if(n2 < 1)
+            return;
             //printf("%d DL %d -> %d UR %d\n",n1,n2,n2,n1);
             graph[n2][ur] = n1;
             break;
         case l:
             n2 = n1-1;
+            if(n2 < 1)
+            return;
             //printf("%d L %d -> %d R %d\n",n1,n2,n2,n1);
             graph[n2][r] = n1;
             break;
         case ul:
             n2 = n1-n-1;
+            if(n2 < 1)
+            return;
             //printf("%d UL %d -> %d DR %d\n",n1,n2,n2,n1);
             graph[n2][dr] = n1;
             break;
@@ -209,4 +225,3 @@ void pretty_print_graph()
         printf("\n");
     }
 }
-

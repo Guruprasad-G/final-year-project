@@ -10,7 +10,7 @@
 #define l               6   // Left
 #define ul              7   // Up Left
 
-#define threshold_val  10   // If sensor value is beyond this threshold, we consider that there is no obstacle/wall
+#define threshold_val  5   // If sensor value is beyond this threshold, we consider that there is no obstacle/wall
 
 #define north           0   // Directions with some value for updating graph and movement based on robot orientation
 #define northeast       1
@@ -34,7 +34,7 @@
 #define BACKWARD       -1
 
 
-#define IRPin           4
+//#define IRPin           4
 #define DUMMY_SERVO1_PIN 12     //We need to create 2 dummy servos.
 //So that ESP32Servo library does not interfere with pwm channel and timer used by esp32 camera.
 #define PAN_PIN 16

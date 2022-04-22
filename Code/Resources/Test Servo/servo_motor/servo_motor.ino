@@ -26,22 +26,22 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  Serial.printf("Servo : 45\n");
+  panServo.write(45);
+  delay(5000);
   Serial.printf("Servo : 90\n");
+  panServo.write(60);
+  delay(5000);
+  Serial.printf("Servo : 135\n");
   panServo.write(90);
   delay(5000);
   Serial.printf("Servo : 180\n");
   panServo.write(180);
   delay(5000);
-  Serial.printf("Servo : 270\n");
+  /*Serial.printf("Servo : 270\n");
   panServo.write(270);
   delay(5000);
   Serial.printf("Servo : 360\n");
   panServo.write(360);
-  delay(5000);
-  Serial.printf("Servo : 45\n");
-  panServo.write(45);
-  delay(5000);
-  Serial.printf("Servo : 60\n");
-  panServo.write(60);
-  delay(5000);
+  delay(5000);*/
 }

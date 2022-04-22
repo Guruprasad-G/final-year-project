@@ -20,26 +20,26 @@ void rotateMotor(int motorNumber, int motorDirection)
 
 void moveCar(int inputValue)
 {
-  Serial.printf("Got value as %d\n", inputValue);
+  //Serial.printf("Got value as %d\n", inputValue);
   switch(inputValue)
   {
 
-    case UP:
+    case LEFT:
       rotateMotor(RIGHT_MOTOR, FORWARD);
       rotateMotor(LEFT_MOTOR, FORWARD);
       break;
 
-    case DOWN:
+    case RIGHT:
       rotateMotor(RIGHT_MOTOR, BACKWARD);
       rotateMotor(LEFT_MOTOR, BACKWARD);
       break;
 
-    case LEFT:
+    case UP:
       rotateMotor(RIGHT_MOTOR, FORWARD);
       rotateMotor(LEFT_MOTOR, BACKWARD);
       break;
 
-    case RIGHT:
+    case DOWN:
       rotateMotor(RIGHT_MOTOR, BACKWARD);
       rotateMotor(LEFT_MOTOR, FORWARD);
       break;

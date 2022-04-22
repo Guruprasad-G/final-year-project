@@ -12,62 +12,120 @@
 int dfs(int current_node)
 {
     int i,backtrace_node;
+    //Serial.print("CURRENT NODE ----------------- %d\n",current_node);
     visited_nodes[current_node] = 1;
     for(i=0;i<8;i++)
     {
-        if(visited_nodes[graph[current_node][i]] == 0)
+        if(visited_nodes[graph[current_node][i]] == 0 && graph[current_node][i]!=0)
         {
             stack[stack_pointer++] = graph[current_node][i];
+            //Serial.print("Returning           -       Current node to be %d\n",graph[current_node][i]);
             return graph[current_node][i];
         }
     }
     backtrace_node = stack[stack_pointer];
     stack[stack_pointer--] = 0;
+    if(backtrace_node !=0)
     return backtrace_node;
+    else
+    return 47;
 }
 
 void bot_movement(int direction)
 {
+    int counter = 0;
+    if(direction==47)
+    moveCar(STOP);
     switch(direction)
     {
         case u:
             moveCar(UP);
+            Serial.print("Moving UP\n");
         case ur:
-            moveCar(RIGHT);
-            moveCar(UP);
+            duration = pulseIn(echoPin, HIGH);
+            distance= duration*0.034/2;
+            while(distance<15 && counter!= 10)
+            {
+              moveCar(RIGHT);
+              Serial.print("Moving RIGHT for UR\n");
+              counter++;
+            }
+              
+            //moveCar(UP);
         case r:
-            moveCar(RIGHT);
-            moveCar(RIGHT);
-            moveCar(UP);
+            duration = pulseIn(echoPin, HIGH);
+            distance= duration*0.034/2;
+            while(distance<15 && counter!= 10)
+            {
+              moveCar(RIGHT);
+              Serial.print("Moving RIGHT for R\n");
+              counter++;
+            }
+              
+            //moveCar(UP);
         case dr:
-            moveCar(RIGHT);
-            moveCar(RIGHT);
-            moveCar(RIGHT);
-            moveCar(UP);
+            duration = pulseIn(echoPin, HIGH);
+            distance= duration*0.034/2;
+            while(distance<15 && counter!= 10)
+            {
+              moveCar(RIGHT);
+              Serial.print("Moving RIGHT for DR\n");
+              counter++;
+            }
+              
+            //moveCar(UP);
         case d:
-            moveCar(RIGHT);
-            moveCar(RIGHT);
-            moveCar(RIGHT);
-            moveCar(RIGHT);
-            moveCar(UP);
+            duration = pulseIn(echoPin, HIGH);
+            distance= duration*0.034/2;
+            while(distance<15 && counter!= 10)
+            {
+              moveCar(RIGHT);
+              Serial.print("Moving RIGHT for D\n");
+              counter++;
+            }
+              
+            //moveCar(UP);
         case dl:
-            moveCar(LEFT);
-            moveCar(LEFT);
-            moveCar(LEFT);
-            moveCar(UP);
+            duration = pulseIn(echoPin, HIGH);
+            distance= duration*0.034/2;
+            while(distance<15 && counter!= 10)
+            {
+              moveCar(LEFT);
+              Serial.print("Moving LEFT for DL\n");
+              counter++;
+            }
+              
+            //moveCar(UP);
         case l:
-            moveCar(LEFT);
-            moveCar(LEFT);
-            moveCar(UP);
+            duration = pulseIn(echoPin, HIGH);
+            distance= duration*0.034/2;
+            while(distance<15 && counter!= 10)
+            {
+              moveCar(LEFT);
+              Serial.print("Moving LEFT for L\n");
+              counter++;
+            }
+              
+            //moveCar(UP);
         case ul:
-            moveCar(LEFT);
-            moveCar(UP);
+            duration = pulseIn(echoPin, HIGH);
+            distance= duration*0.034/2;
+            while(distance<15 && counter!= 10)
+            {
+              moveCar(LEFT);
+              Serial.print("Moving LEFT for UL\n");
+              counter++;
+            }
+              
+            //moveCar(UP);
     }
 }
 
-void next_node_movement(int current_node, int orientation)
+void next_node_movement(int current_node, int orientation, int arr[])
 {
     int next_node = dfs(current_node);
+    if(next_node==47)
+    bot_movement(47);
     int directions_arr[] = {u,ur,r,dr,d,dl,l,ul};
     int node_location,where_to_go;
     int i;
@@ -101,6 +159,6 @@ void next_node_movement(int current_node, int orientation)
     }
     where_to_go = directions_arr[node_location];
     bot_movement(where_to_go);
-    int msg[2] = {next_node,node_location};
-    return msg;
+    arr[0] = next_node;
+    arr[1] = node_location;
 }
