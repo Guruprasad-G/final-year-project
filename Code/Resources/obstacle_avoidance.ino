@@ -1,20 +1,13 @@
 
 #include "esp_camera.h"
-#include "WiFi.h"
-#include "ESPAsyncWebServer.h"
 #include <Arduino.h>
 #include <iostream>
 #include <sstream>
-const char* ssid = "ESP32-Soft-accessPoint";
-const char* password = "itworks";
-AsyncWebServer server(80);
 
 int trigPin = 4;
 int echoPin = 2;
 int duration;
 int distance;
-char string[20];
-int memory = 0;
 
 struct MOTOR_PINS
 {  
@@ -66,22 +59,22 @@ void moveCar(int inputValue)
   switch(inputValue)
   {
 
-    case LEFT:
+    case UP:
       rotateMotor(RIGHT_MOTOR, FORWARD);
       rotateMotor(LEFT_MOTOR, FORWARD);                  
       break;
   
-    case RIGHT:
+    case DOWN:
       rotateMotor(RIGHT_MOTOR, BACKWARD);
       rotateMotor(LEFT_MOTOR, BACKWARD);  
       break;
   
-    case UP:
+    case LEFT:
       rotateMotor(RIGHT_MOTOR, FORWARD);
       rotateMotor(LEFT_MOTOR, BACKWARD);  
       break;
   
-    case DOWN:
+    case RIGHT:
       rotateMotor(RIGHT_MOTOR, BACKWARD);
       rotateMotor(LEFT_MOTOR, FORWARD); 
       break;
@@ -98,45 +91,22 @@ void moveCar(int inputValue)
   }
 }
 
-/*void movecar(int inp)
-{
-  switch(inp)
-  {
-    case LEFT:
-      moveCar(UP);
-    case UP:
-      moveCar(LEFT);
-    case RIGHT:
-      moveCar(DOWN);
-    case DOWN:
-      moveCar(RIGHT);
-  }
-}*/
-
 void setUpPinModes()
 {
-  Serial.println("Setting soft access point mode");
-  WiFi.softAP(ssid, password);
-  IPAddress IP = WiFi.softAPIP();
-  Serial.print("AP IP address: ");
-  Serial.println(IP);
-  server.on("/thisisme", HTTP_GET, [](AsyncWebServerRequest *request){request->send_P(200, "text/plain", "Pursuit of HAPPINESS");});
+      
   for (int i = 0; i < motorPins.size(); i++)
   {    
     pinMode(motorPins[i].pinIN1, OUTPUT);
     pinMode(motorPins[i].pinIN2, OUTPUT);
   }
   moveCar(STOP);
-  server.begin();
 }
 
 void setup() {
   Serial.begin(115200);
   setUpPinModes();
-  //setup_cam();
   pinMode(trigPin, OUTPUT); 
-  pinMode(echoPin, INPUT); 
-  moveCar(STOP);
+  pinMode(echoPin, INPUT);
 }
  void loop() {
   digitalWrite(trigPin, LOW); 
@@ -148,60 +118,30 @@ void setup() {
   distance= duration*0.034/2;
   Serial.print("UltraSound Sensor distance = ");
   Serial.println(distance);
-  sprintf(string,"%d",distance);
-  server.on("/distance", HTTP_GET, [](AsyncWebServerRequest *request){request->send_P(200, "text/plain", string);});
-  IPAddress IP = WiFi.softAPIP();
-  Serial.print("AP IP address: ");
-  Serial.println(IP);
   delay(100);
-  /*Serial.println("Moving UP");
-  moveCar(UP);
-  delay(2000);
-  Serial.println("Moving RIGHT");
-  moveCar(RIGHT);
-  delay(2000);
-  Serial.println("Moving LEFT");
-  moveCar(LEFT);
-  delay(2000);
-  Serial.println("Moving DOWN");
-  moveCar(DOWN);
-  delay(2000);*/
-  if(distance>15&&distance<70)
+  if(distance>22)
   {
     Serial.println("Moving UP");
-    server.on("/movement", HTTP_GET, [](AsyncWebServerRequest *request){request->send_P(200, "text/plain", "UP");});
     moveCar(UP);
   }
-  else if(distance==15||distance==14||distance==16)
+  else if(distance==19||distance==20||distance==21)
   {
-    if(memory<25)
-    {
-      Serial.println("Moving RIGHT");
-      moveCar(RIGHT);
-      server.on("/movement", HTTP_GET, [](AsyncWebServerRequest *request){request->send_P(200, "text/plain", "RIGHT");});
-      memory++;
-      memory%=50;
-    }
-    else
-    {
-      Serial.println("Moving LEFT");
-      moveCar(LEFT);
-      server.on("/movement", HTTP_GET, [](AsyncWebServerRequest *request){request->send_P(200, "text/plain", "LEFT");});
-      memory++;
-      memory%=50;
-    }
-    
+    Serial.println("Moving RIGHT");
+    moveCar(RIGHT);
+  }
+  else if(distance==18||distance==17||distance==16)
+  {
+    Serial.println("LEFT");
+    moveCar(LEFT);
   }
   else if(distance<=15)
   {
     Serial.println("DOWN");
     moveCar(DOWN);
-    server.on("/movement", HTTP_GET, [](AsyncWebServerRequest *request){request->send_P(200, "text/plain", "DOWN");});
   }
   else
   {
     Serial.println("STOP");
     moveCar(STOP);
-    server.on("/movement", HTTP_GET, [](AsyncWebServerRequest *request){request->send_P(200, "text/plain", "STOP");});
   }
 }

@@ -1,0 +1,552 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0018,len:4
+load:0x3fff001c,len:1216
+ho 0 tail 12 room 4
+load:0x40078000,len:10944
+load:0x40080400,len:6360
+entry 0x400806b4
+
+Current node = 1
+Current orientation = 0
+Calling Pan servo to rotate 90 degrees
+Pan servo rotate = 90
+Ultrasound sensor distance = 48
+Calling Pan servo to rotate 0 degrees
+Pan servo rotate = 0
+Ultrasound sensor distance = 77
+
+1 R 2 -> 2 L 1
+Calling Pan servo to rotate 180 degrees
+Pan servo rotate = 180
+Ultrasound sensor distance = 8
+Resetting Servo to 90
+Before going to next node, this is the graph connections :- 
+N - 	U	UR	R	DR	D	DL	L	UL
+0 - 	0	0	0	0	0	0	0	0	
+1 - 	0	0	2	0	0	0	0	0	
+2 - 	0	0	0	0	0	0	1	0	
+3 - 	0	0	0	0	0	0	0	0	
+4 - 	0	0	0	0	0	0	0	0	
+5 - 	0	0	0	0	0	0	0	0	
+6 - 	0	0	0	0	0	0	0	0	
+7 - 	0	0	0	0	0	0	0	0	
+8 - 	0	0	0	0	0	0	0	0	
+9 - 	0	0	0	0	0	0	0	0	
+1 - 2   3
+         
+4   5   6
+         
+7   8   9
+         
+
+Printing Stack values0  0  0  0  0  0  0  0  
+Calling next node movement
+Stack has this value -> 2
+DFS algo is returning this value          -       2
+Stack Pointer has this value -> 1
+Inside bot_movement algorithm
+Dirrection array values -> 0  1  2  3  4  5  6  7  
+Where to go next -> 2
+Moving RIGHT for R
+Moving UP for R
+Next node = 2
+Next orientation = 2
+
+Current node = 2
+Current orientation = 2
+Calling Pan servo to rotate 90 degrees
+Pan servo rotate = 90
+Ultrasound sensor distance = 60
+
+2 R 3 -> 3 L 2
+Calling Pan servo to rotate 0 degrees
+Pan servo rotate = 0
+Ultrasound sensor distance = 236
+
+2 D 5 -> 5 U 2
+Calling Pan servo to rotate 180 degrees
+Pan servo rotate = 180
+Ultrasound sensor distance = 9
+Resetting Servo to 90
+Before going to next node, this is the graph connections :- 
+N - 	U	UR	R	DR	D	DL	L	UL
+0 - 	0	0	0	0	0	0	0	0	
+1 - 	0	0	2	0	0	0	0	0	
+2 - 	0	0	3	0	5	0	1	0	
+3 - 	0	0	0	0	0	0	2	0	
+4 - 	0	0	0	0	0	0	0	0	
+5 - 	2	0	0	0	0	0	0	0	
+6 - 	0	0	0	0	0	0	0	0	
+7 - 	0	0	0	0	0	0	0	0	
+8 - 	0	0	0	0	0	0	0	0	
+9 - 	0	0	0	0	0	0	0	0	
+1 - 2 - 3
+    |    
+4   5   6
+         
+7   8   9
+         
+
+Printing Stack values2  0  0  0  0  0  0  0  
+Calling next node movement
+Stack has this value -> 3
+DFS algo is returning this value          -       3
+Stack Pointer has this value -> 2
+Inside bot_movement algorithm
+Dirrection array values -> 6  7  0  1  2  3  4  5  
+Where to go next -> 0
+Moving UP
+Next node = 3
+Next orientation = 2
+
+Current node = 3
+Current orientation = 2
+Calling Pan servo to rotate 90 degrees
+Pan servo rotate = 90
+Ultrasound sensor distance = 5
+Calling Pan servo to rotate 0 degrees
+Pan servo rotate = 0
+Ultrasound sensor distance = 237
+
+3 D 6 -> 6 U 3
+Calling Pan servo to rotate 180 degrees
+Pan servo rotate = 180
+Ultrasound sensor distance = 40
+Resetting Servo to 90
+Before going to next node, this is the graph connections :- 
+N - 	U	UR	R	DR	D	DL	L	UL
+0 - 	0	0	0	0	0	0	0	0	
+1 - 	0	0	2	0	0	0	0	0	
+2 - 	0	0	3	0	5	0	1	0	
+3 - 	0	0	0	0	6	0	2	0	
+4 - 	0	0	0	0	0	0	0	0	
+5 - 	2	0	0	0	0	0	0	0	
+6 - 	3	0	0	0	0	0	0	0	
+7 - 	0	0	0	0	0	0	0	0	
+8 - 	0	0	0	0	0	0	0	0	
+9 - 	0	0	0	0	0	0	0	0	
+1 - 2 - 3
+    |   |
+4   5   6
+         
+7   8   9
+         
+
+Printing Stack values2  3  0  0  0  0  0  0  
+Calling next node movement
+Stack has this value -> 6
+DFS algo is returning this value          -       6
+Stack Pointer has this value -> 3
+Inside bot_movement algorithm
+Dirrection array values -> 6  7  0  1  2  3  4  5  
+Where to go next -> 2
+Moving RIGHT for R
+Moving UP for R
+Next node = 6
+Next orientation = 4
+
+Current node = 6
+Current orientation = 4
+Calling Pan servo to rotate 90 degrees
+Pan servo rotate = 90
+Ultrasound sensor distance = 220
+
+6 D 9 -> 9 U 6
+Calling Pan servo to rotate 0 degrees
+Pan servo rotate = 0
+Ultrasound sensor distance = 48
+
+6 L 5 -> 5 R 6
+Calling Pan servo to rotate 180 degrees
+Pan servo rotate = 180
+Ultrasound sensor distance = 6
+Resetting Servo to 90
+Before going to next node, this is the graph connections :- 
+N - 	U	UR	R	DR	D	DL	L	UL
+0 - 	0	0	0	0	0	0	0	0	
+1 - 	0	0	2	0	0	0	0	0	
+2 - 	0	0	3	0	5	0	1	0	
+3 - 	0	0	0	0	6	0	2	0	
+4 - 	0	0	0	0	0	0	0	0	
+5 - 	2	0	6	0	0	0	0	0	
+6 - 	3	0	0	0	9	0	5	0	
+7 - 	0	0	0	0	0	0	0	0	
+8 - 	0	0	0	0	0	0	0	0	
+9 - 	6	0	0	0	0	0	0	0	
+1 - 2 - 3
+    |   |
+4   5 - 6
+        |
+7   8   9
+         
+
+Printing Stack values2  3  6  0  0  0  0  0  
+Calling next node movement
+Stack has this value -> 5
+DFS algo is returning this value          -       5
+Stack Pointer has this value -> 4
+Inside bot_movement algorithm
+Dirrection array values -> 4  5  6  7  0  1  2  3  
+Where to go next -> 2
+Moving RIGHT for R
+Moving UP for R
+Next node = 5
+Next orientation = 6
+
+Current node = 5
+Current orientation = 6
+Calling Pan servo to rotate 90 degrees
+Pan servo rotate = 90
+Ultrasound sensor distance = 63
+
+5 L 4 -> 4 R 5
+Calling Pan servo to rotate 0 degrees
+Pan servo rotate = 0
+Ultrasound sensor distance = 31
+
+5 U 2 -> 2 D 5
+Calling Pan servo to rotate 180 degrees
+Pan servo rotate = 180
+Ultrasound sensor distance = 54
+
+5 D 8 -> 8 U 5
+Resetting Servo to 90
+Before going to next node, this is the graph connections :- 
+N - 	U	UR	R	DR	D	DL	L	UL
+0 - 	0	0	0	0	0	0	0	0	
+1 - 	0	0	2	0	0	0	0	0	
+2 - 	0	0	3	0	5	0	1	0	
+3 - 	0	0	0	0	6	0	2	0	
+4 - 	0	0	5	0	0	0	0	0	
+5 - 	2	0	6	0	8	0	4	0	
+6 - 	3	0	0	0	9	0	5	0	
+7 - 	0	0	0	0	0	0	0	0	
+8 - 	5	0	0	0	0	0	0	0	
+9 - 	6	0	0	0	0	0	0	0	
+1 - 2 - 3
+    |   |
+4 - 5 - 6
+    |   |
+7   8   9
+         
+
+Printing Stack values2  3  6  5  0  0  0  0  
+Calling next node movement
+Stack has this value -> 8
+DFS algo is returning this value          -       8
+Stack Pointer has this value -> 5
+Inside bot_movement algorithm
+Dirrection array values -> 2  3  4  5  6  7  0  1  
+Where to go next -> 6
+Moving LEFT for L
+Moving UP for L
+Next node = 8
+Next orientation = 4
+
+Current node = 8
+Current orientation = 4
+Calling Pan servo to rotate 90 degrees
+Pan servo rotate = 90
+Ultrasound sensor distance = 4
+Calling Pan servo to rotate 0 degrees
+Pan servo rotate = 0
+Ultrasound sensor distance = 39
+
+8 L 7 -> 7 R 8
+Calling Pan servo to rotate 180 degrees
+Pan servo rotate = 180
+Ultrasound sensor distance = 49
+
+8 R 9 -> 9 L 8
+Resetting Servo to 90
+Before going to next node, this is the graph connections :- 
+N - 	U	UR	R	DR	D	DL	L	UL
+0 - 	0	0	0	0	0	0	0	0	
+1 - 	0	0	2	0	0	0	0	0	
+2 - 	0	0	3	0	5	0	1	0	
+3 - 	0	0	0	0	6	0	2	0	
+4 - 	0	0	5	0	0	0	0	0	
+5 - 	2	0	6	0	8	0	4	0	
+6 - 	3	0	0	0	9	0	5	0	
+7 - 	0	0	8	0	0	0	0	0	
+8 - 	5	0	9	0	0	0	7	0	
+9 - 	6	0	0	0	0	0	8	0	
+1 - 2 - 3
+    |   |
+4 - 5 - 6
+    |   |
+7 - 8 - 9
+         
+
+Printing Stack values2  3  6  5  8  0  0  0  
+Calling next node movement
+Stack has this value -> 7
+DFS algo is returning this value          -       7
+Stack Pointer has this value -> 6
+Inside bot_movement algorithm
+Dirrection array values -> 4  5  6  7  0  1  2  3  
+Where to go next -> 2
+Moving RIGHT for R
+Moving UP for R
+Next node = 7
+Next orientation = 6
+
+Current node = 7
+Current orientation = 6
+Calling Pan servo to rotate 90 degrees
+Pan servo rotate = 90
+Ultrasound sensor distance = 4
+Calling Pan servo to rotate 0 degrees
+Pan servo rotate = 0
+Ultrasound sensor distance = 36
+
+7 U 4 -> 4 D 7
+Calling Pan servo to rotate 180 degrees
+Pan servo rotate = 180
+Ultrasound sensor distance = 5
+Resetting Servo to 90
+Before going to next node, this is the graph connections :- 
+N - 	U	UR	R	DR	D	DL	L	UL
+0 - 	0	0	0	0	0	0	0	0	
+1 - 	0	0	2	0	0	0	0	0	
+2 - 	0	0	3	0	5	0	1	0	
+3 - 	0	0	0	0	6	0	2	0	
+4 - 	0	0	5	0	7	0	0	0	
+5 - 	2	0	6	0	8	0	4	0	
+6 - 	3	0	0	0	9	0	5	0	
+7 - 	4	0	8	0	0	0	0	0	
+8 - 	5	0	9	0	0	0	7	0	
+9 - 	6	0	0	0	0	0	8	0	
+1 - 2 - 3
+    |   |
+4 - 5 - 6
+|   |   |
+7 - 8 - 9
+         
+
+Printing Stack values2  3  6  5  8  7  0  0  
+Calling next node movement
+Stack has this value -> 4
+DFS algo is returning this value          -       4
+Stack Pointer has this value -> 7
+Inside bot_movement algorithm
+Dirrection array values -> 2  3  4  5  6  7  0  1  
+Where to go next -> 2
+Moving RIGHT for R
+Moving UP for R
+Next node = 4
+Next orientation = 0
+
+Current node = 4
+Current orientation = 0
+Calling Pan servo to rotate 90 degrees
+Pan servo rotate = 90
+Ultrasound sensor distance = 35
+
+4 U 1 -> 1 D 4
+Calling Pan servo to rotate 0 degrees
+Pan servo rotate = 0
+Ultrasound sensor distance = 54
+
+4 R 5 -> 5 L 4
+Calling Pan servo to rotate 180 degrees
+Pan servo rotate = 180
+Ultrasound sensor distance = 7
+Resetting Servo to 90
+Before going to next node, this is the graph connections :- 
+N - 	U	UR	R	DR	D	DL	L	UL
+0 - 	0	0	0	0	0	0	0	0	
+1 - 	0	0	2	0	4	0	0	0	
+2 - 	0	0	3	0	5	0	1	0	
+3 - 	0	0	0	0	6	0	2	0	
+4 - 	1	0	5	0	7	0	0	0	
+5 - 	2	0	6	0	8	0	4	0	
+6 - 	3	0	0	0	9	0	5	0	
+7 - 	4	0	8	0	0	0	0	0	
+8 - 	5	0	9	0	0	0	7	0	
+9 - 	6	0	0	0	0	0	8	0	
+1 - 2 - 3
+|   |   |
+4 - 5 - 6
+|   |   |
+7 - 8 - 9
+         
+
+Printing Stack values2  3  6  5  8  7  4  0  
+Calling next node movement
+Stack Pointer has this value -> 6
+BACKTRACE NODE ----------------->>> 4
+Inside bot_movement algorithm
+Dirrection array values -> 0  1  2  3  4  5  6  7  
+Where to go next -> 1061160818
+Next node = 4
+Next orientation = -1
+
+Current node = 4
+Current orientation = -1
+Calling Pan servo to rotate 90 degrees
+Pan servo rotate = 90
+Ultrasound sensor distance = 33
+Calling Pan servo to rotate 0 degrees
+Pan servo rotate = 0
+Ultrasound sensor distance = 43
+
+4 UR 2 -> 2 DL 4
+Calling Pan servo to rotate 180 degrees
+Pan servo rotate = 180
+Ultrasound sensor distance = 98
+
+4 DL 6 -> 6 UR 4
+Resetting Servo to 90
+Before going to next node, this is the graph connections :- 
+N - 	U	UR	R	DR	D	DL	L	UL
+0 - 	0	0	0	0	0	0	0	0	
+1 - 	0	0	2	0	4	0	0	0	
+2 - 	0	0	3	0	5	4	1	0	
+3 - 	0	0	0	0	6	0	2	2146435072	
+4 - 	1	2	5	0	7	6	0	0	
+5 - 	2	0	6	0	8	0	4	0	
+6 - 	3	4	0	0	9	0	5	0	
+7 - 	4	0	8	0	0	0	0	0	
+8 - 	5	0	9	0	0	0	7	0	
+9 - 	6	0	0	0	0	0	8	0	
+1 - 2 - 3
+| / |   |
+4/- 5 -/6
+|   |   |
+7 - 8 - 9
+         
+
+Printing Stack values2  3  6  5  8  7  0  0  
+Calling next node movement
+Stack Pointer has this value -> 4
+BACKTRACE NODE ----------------->>> 8
+Inside bot_movement algorithm
+Dirrection array values -> 0  1  2  3  4  5  6  7  
+Where to go next -> 3
+Moving RIGHT for DR
+Moving UP for DR
+Next node = 8
+Next orientation = 3
+
+Current node = 8
+Current orientation = 3
+Calling Pan servo to rotate 90 degrees
+Pan servo rotate = 90
+Ultrasound sensor distance = 60
+
+8 DR 12 -> 12 UL 8
+Calling Pan servo to rotate 0 degrees
+Pan servo rotate = 0
+Ultrasound sensor distance = 48
+
+8 DL 10 -> 10 UR 8
+Calling Pan servo to rotate 180 degrees
+Pan servo rotate = 180
+Ultrasound sensor distance = 73
+
+8 UR 6 -> 6 DL 8
+Resetting Servo to 90
+Before going to next node, this is the graph connections :- 
+N - 	U	UR	R	DR	D	DL	L	UL
+0 - 	0	0	0	0	0	0	0	0	
+1 - 	0	0	2	0	4	0	0	0	
+2 - 	0	0	3	0	5	4	1	0	
+3 - 	0	0	0	0	6	0	2	2146435072	
+4 - 	1	2	5	0	7	6	0	0	
+5 - 	2	0	6	0	8	0	4	0	
+6 - 	3	4	0	0	9	8	5	0	
+7 - 	4	0	8	0	0	0	0	0	
+8 - 	5	6	9	12	0	10	7	0	
+9 - 	6	0	0	0	0	0	8	0	
+1 - 2 - 3
+| / |   |
+4/- 5 -/6
+|   | / |
+7 - 8 - 9
+  /   \  
+
+Printing Stack values2  3  6  5  0  7  0  0  
+Calling next node movement
+Stack Pointer has this value -> 2
+BACKTRACE NODE ----------------->>> 6
+Inside bot_movement algorithm
+Dirrection array values -> 5  6  7  0  1  2  3  4  
+Where to go next -> 6
+Moving LEFT for L
+Moving UP for L
+Next node = 6
+Next orientation = 1
+
+Current node = 6
+Current orientation = 1
+Calling Pan servo to rotate 90 degrees
+Pan servo rotate = 90
+Ultrasound sensor distance = 54
+
+6 UR 4 -> 4 DL 6
+Calling Pan servo to rotate 0 degrees
+Pan servo rotate = 0
+Ultrasound sensor distance = 21
+
+6 DR 10 -> 10 UL 6
+Calling Pan servo to rotate 180 degrees
+Pan servo rotate = 180
+Ultrasound sensor distance = 30
+
+6 UL 2 -> 2 DR 6
+Resetting Servo to 90
+Before going to next node, this is the graph connections :- 
+N - 	U	UR	R	DR	D	DL	L	UL
+0 - 	0	0	0	0	0	0	0	0	
+1 - 	0	0	2	0	4	0	0	0	
+2 - 	0	0	3	6	5	4	1	0	
+3 - 	0	0	0	0	6	0	2	2146435072	
+4 - 	1	2	5	0	7	6	0	0	
+5 - 	2	0	6	0	8	0	4	0	
+6 - 	3	4	0	10	9	8	5	2	
+7 - 	4	0	8	0	0	0	0	0	
+8 - 	5	6	9	12	0	10	7	0	
+9 - 	6	0	0	0	0	0	8	0	
+1 - 2 - 3
+| / | \ |
+4/- 5 -/6
+|   | / |
+7\- 8 - 9
+  /   \  
+
+Printing Stack values2  3  0  5  0  7  0  0  
+Calling next node movement
+Stack Pointer has this value -> 0
+BACKTRACE NODE ----------------->>> 2
+Inside bot_movement algorithm
+Dirrection array values -> 7  0  1  2  3  4  5  6  
+Where to go next -> 6
+Moving LEFT for L
+Moving UP for L
+Next node = 2
+Next orientation = 7
+
+Current node = 2
+Current orientation = 7
+Calling Pan servo to rotate 90 degrees
+Pan servo rotate = 90
+Ultrasound sensor distance = 7
+Calling Pan servo to rotate 0 degrees
+Pan servo rotate = 0
+Ultrasound sensor distance = 12
+Calling Pan servo to rotate 180 degrees
+Pan servo rotate = 180
+Ultrasound sensor distance = 80
+
+2 DL 4 -> 4 UR 2
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x3 (DOWNLOAD_BOOT(UART0/UART1/SDIO_REI_REO_V2))
+waiting for download
+

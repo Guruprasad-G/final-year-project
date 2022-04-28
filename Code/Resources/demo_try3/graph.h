@@ -17,24 +17,68 @@ void initialize_graph()
     }
 }
 
-void connect_node(int n1, int direction, int sensor_val, int orientation)
+void print_graph()
+{
+    int i,j;
+    for(i=0;i<n*n+1;i++)
+    {
+        Serial.print(i);
+        Serial.print(" - \t");
+        for(j=0;j<8;j++)
+        {
+            Serial.print(graph[i][j]);
+            Serial.print("\t");
+        }
+        printf("\n");
+    }
+} 
+
+void rotate_array(int n1, int orientation)
+{
+  if(previous_node == n1)
+    return;
+  else
+  {
+    for(i=0;i<orientation;i++)
+    {
+        int temp = graph[n1][0];
+        int j;
+        for (j=0;j<7;j++)
+            graph[n1][j] = graph[n1][j+1];
+        graph[n1][8-1] = temp;
+    }
+    Serial.print("Graph array upon rotation =>   ");
+    for(i=0;i<8;i++)
+    {
+      Serial.print(graph[n1][i]);
+      Serial.print("  ");
+    }
+    Serial.print("\n");
+  }
+  previous_node = n1;
+}
+
+int check_if_val_in_array(int n1, int n2)
+{
+  int i;
+  for(i=0;i<8;i++)
+  {
+    if(graph[n1][i] == n2)
+      return 0;
+  }
+  return 1;
+}
+
+void connect_node(int n1, int direct, int sensor_val, int orientation)
 {
     int i,j,n2;
     if(sensor_val < threshold_val)
     {
         return;
     }
-    for(i=0;i<orientation;i++)
-    {
-        Serial.print("Looping in Connect Node Orientation iter = ");
-        Serial.print(i);
-        Serial.print("\n");
-        int temp = graph[n1][0];
-        for (j=0;j<7;j++)
-            graph[n1][j] = graph[n1][j+1];
-        graph[n1][n-1] = temp;
-    }
-    switch(direction)
+    //rotate_array( n1, orientation);
+    direct = (direct + orientation)%8;
+    switch(direct)
     {
         case u:
             n2 = n1-n;
@@ -50,7 +94,8 @@ void connect_node(int n1, int direction, int sensor_val, int orientation)
             Serial.print(" D ");
             Serial.print(n1);
             Serial.print("\n");
-            graph[n2][d] = n1;
+            if(check_if_val_in_array(n2,n1))
+              graph[n2][d] = n1;
             break;
         case ur:
             n2 = n1-n+1;
@@ -66,7 +111,8 @@ void connect_node(int n1, int direction, int sensor_val, int orientation)
             Serial.print(" DL ");
             Serial.print(n1);
             Serial.print("\n");
-            graph[n2][dl] = n1;
+            if(check_if_val_in_array(n2,n1))
+              graph[n2][dl] = n1;
             break;
         case r:
             n2 = n1+1;
@@ -82,7 +128,8 @@ void connect_node(int n1, int direction, int sensor_val, int orientation)
             Serial.print(" L ");
             Serial.print(n1);
             Serial.print("\n");
-            graph[n2][l] = n1;
+            if(check_if_val_in_array(n2,n1))
+              graph[n2][l] = n1;
             break;
         case dr:
             n2 = n1+n+1;
@@ -98,7 +145,8 @@ void connect_node(int n1, int direction, int sensor_val, int orientation)
             Serial.print(" UL ");
             Serial.print(n1);
             Serial.print("\n");
-            graph[n2][ul] = n1;
+            if(check_if_val_in_array(n2,n1))
+              graph[n2][ul] = n1;
             break;
         case d:
             n2 = n1+n;
@@ -114,7 +162,8 @@ void connect_node(int n1, int direction, int sensor_val, int orientation)
             Serial.print(" U ");
             Serial.print(n1);
             Serial.print("\n");
-            graph[n2][u] = n1;
+            if(check_if_val_in_array(n2,n1))
+              graph[n2][u] = n1;
             break;
         case dl:
             n2 = n1+n-1;
@@ -130,7 +179,8 @@ void connect_node(int n1, int direction, int sensor_val, int orientation)
             Serial.print(" UR ");
             Serial.print(n1);
             Serial.print("\n");
-            graph[n2][ur] = n1;
+            if(check_if_val_in_array(n2,n1))
+              graph[n2][ur] = n1;
             break;
         case l:
             n2 = n1-1;
@@ -146,7 +196,8 @@ void connect_node(int n1, int direction, int sensor_val, int orientation)
             Serial.print(" R ");
             Serial.print(n1);
             Serial.print("\n");
-            graph[n2][r] = n1;
+            if(check_if_val_in_array(n2,n1))
+              graph[n2][r] = n1;
             break;
         case ul:
             n2 = n1-n-1;
@@ -162,11 +213,27 @@ void connect_node(int n1, int direction, int sensor_val, int orientation)
             Serial.print(" DR ");
             Serial.print(n1);
             Serial.print("\n");
-            graph[n2][dr] = n1;
+            if(check_if_val_in_array(n2,n1))
+              graph[n2][dr] = n1;
             break;
     }
-    graph[n1][direction] = n2;
+    if(check_if_val_in_array(n1,n2))
+      graph[n1][direct] = n2;
     //printf("\n");
+    /*for(i=0;i!=orientation;i++)
+    {
+        int temp = graph[n1][7];
+        for (j=7;j!=0;j--)
+            graph[n1][j] = graph[n1][j-1];
+        graph[n1][0] = temp;
+    }
+    Serial.print("Graph array upon reset rotation =>   ");
+    for(i=0;i<8;i++)
+    {
+      Serial.print(graph[n1][i]);
+      Serial.print("  ");
+    }
+    Serial.print("\n");*/
 }
 
 void generate_graph()
@@ -271,22 +338,6 @@ void generate_graph()
                 return;
             }
         }
-    }
-}
-
-void print_graph()
-{
-    int i,j;
-    for(i=0;i<n*n+1;i++)
-    {
-        Serial.print(i);
-        Serial.print(" - \t");
-        for(j=0;j<8;j++)
-        {
-            Serial.print(graph[i][j]);
-            Serial.print("\t");
-        }
-        printf("\n");
     }
 }
 

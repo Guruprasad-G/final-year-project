@@ -26,12 +26,9 @@ void connect_node(int n1, int direction, int sensor_val, int orientation)
     }
     for(i=0;i<orientation;i++)
     {
-        Serial.print("Looping in Connect Node Orientation iter = ");
-        Serial.print(i);
-        Serial.print("\n");
         int temp = graph[n1][0];
-        for (j=0;j<7;j++)
-            graph[n1][j] = graph[n1][j+1];
+        for (i=0;i<7;i++)
+            graph[n1][i] = graph[n1][i+1];
         graph[n1][n-1] = temp;
     }
     switch(direction)

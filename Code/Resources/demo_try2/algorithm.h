@@ -12,14 +12,10 @@
 int dfs(int current_node)
 {
     int i,backtrace_node;
-    Serial.print("Entering DFS function \n");
     //Serial.print("CURRENT NODE ----------------- %d\n",current_node);
     visited_nodes[current_node] = 1;
     for(i=0;i<8;i++)
     {
-        Serial.print("Looping in DFS iter = ");
-        Serial.print(i);
-        Serial.print("\n");
         if(visited_nodes[graph[current_node][i]] == 0 && graph[current_node][i]!=0)
         {
             stack[stack_pointer++] = graph[current_node][i];
@@ -86,8 +82,8 @@ void bot_movement(int direction)
             Serial.print("Moving RIGHT for R\n");
             moveCar(RIGHT);
             moveCar(RIGHT);
-            //moveCar(RIGHT);
-            //moveCar(RIGHT);
+            moveCar(RIGHT);
+            moveCar(RIGHT);
             Serial.print("Moving UP for R\n");
             moveCar(UP);
             /*duration = pulseIn(echoPin, HIGH);
@@ -269,17 +265,13 @@ void next_node_movement(int current_node, int orientation, int arr[])
       bot_movement(-1);
       Serial.print("Robot completely surrounded or Robot returned to Home node!! END OF RUN!!");
     }
-    Serial.print("Returned from DFS\n");
     int directions_arr[] = {u,ur,r,dr,d,dl,l,ul};
     int node_location,where_to_go;
-    int i,j;
-    for(i=0;i<orientation;i++)
+    int i;
+    for(i=0;i!=orientation;i++)
     {
-        Serial.print("Looping in Orient change iter = ");
-        Serial.print(i);
-        Serial.print("\n");
         int temp = directions_arr[7];
-        for (j=7;j!=0;j--)
+        for (i=7;i!=0;i--)
             directions_arr[i] = directions_arr[i-1];
         directions_arr[0] = temp;
     }

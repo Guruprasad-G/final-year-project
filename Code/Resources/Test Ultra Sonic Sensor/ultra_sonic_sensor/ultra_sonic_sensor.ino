@@ -16,6 +16,7 @@ void setup() {
   digitalWrite(trigPin, LOW);
   duration = pulseIn(echoPin, HIGH);
   distance= duration*0.034/2;
+  Serial.println("Ultrasonic sensor value = ");
   Serial.println(distance);
   delay(100);
 }
