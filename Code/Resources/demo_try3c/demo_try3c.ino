@@ -1,12 +1,12 @@
 #include "esp_camera.h"
 #include "WiFi.h"
 #include "ESPAsyncWebServer.h"
+#include "HTTPClient.h"               ////////////////////
 #include "Arduino.h"
 #include <iostream>
 #include <sstream>
 #include <ESP32Servo.h>
 #include "required_headers.h"
-//#include "robot_commands.h"
 
 int graph[n*n+1][8];        // Array of n*n+1 with 0th entry being empty. Inner array consist of the 8 different directions in which node can be connected
 char print_str[n+3][n*n];   // String to represent Graph
@@ -20,11 +20,8 @@ int current_orientation = 0;
 int previous_node = 0;
 int i;
 int rec_msg[2];
-int trigPin = 4;
-int echoPin = 2;
 int arr[2];
 char string[20];
-int servo_rotate[3] = {90,0,180};
 
 //Servo dummyServo1;
 Servo panServo;

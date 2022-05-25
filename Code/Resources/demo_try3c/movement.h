@@ -5,8 +5,7 @@ void rotate_backward()
   digitalWrite(purple_pin, LOW);
   digitalWrite(blue_pin, HIGH);
   digitalWrite(green_pin, LOW);
-  //delay(2250);
-  delay(3000);
+  delay(2250);
 }
 
 void rotate_left()
@@ -15,8 +14,7 @@ void rotate_left()
   digitalWrite(purple_pin, HIGH);
   digitalWrite(blue_pin, HIGH);
   digitalWrite(green_pin, LOW);
-  //delay(686);
-  delay(750);
+  delay(683);
 }
 
 void rotate_right()
@@ -25,8 +23,7 @@ void rotate_right()
   digitalWrite(purple_pin, LOW);
   digitalWrite(blue_pin, LOW);
   digitalWrite(green_pin, HIGH);
-  //delay(686);
-  delay(750);
+  delay(683);
 }
 
 void rotate_forward()
@@ -35,8 +32,7 @@ void rotate_forward()
   digitalWrite(purple_pin, HIGH);
   digitalWrite(blue_pin, LOW);
   digitalWrite(green_pin, HIGH);
-  //delay(2250);
-  delay(3000);
+  delay(2250);
 }
 
 void rotate_stop()

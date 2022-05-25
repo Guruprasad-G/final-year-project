@@ -83,7 +83,7 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
         case u:
             n2 = n1-n;
             if(n2 < 1)
-              return;
+            return;
             //printf("%d U %d -> %d D %d\n",n1,n2,n2,n1);
             Serial.print("\n");
             Serial.print(n1);
@@ -100,7 +100,7 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
         case ur:
             n2 = n1-n+1;
             if(n2 < 1)
-              return;
+            return;
             //printf("%d UR %d -> %d DL %d\n",n1,n2,n2,n1);
             Serial.print("\n");
             Serial.print(n1);
@@ -117,7 +117,7 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
         case r:
             n2 = n1+1;
             if(n2 < 1)
-              return;
+            return;
             //printf("%d R %d -> %d L %d\n",n1,n2,n2,n1);
             Serial.print("\n");
             Serial.print(n1);
@@ -134,7 +134,7 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
         case dr:
             n2 = n1+n+1;
             if(n2 < 1)
-              return;
+            return;
             //printf("%d DR %d -> %d UL %d\n",n1,n2,n2,n1);
             Serial.print("\n");
             Serial.print(n1);
@@ -151,7 +151,7 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
         case d:
             n2 = n1+n;
             if(n2 < 1)
-              return;
+            return;
             //printf("%d D %d -> %d U %d\n",n1,n2,n2,n1);
             Serial.print("\n");
             Serial.print(n1);
@@ -168,7 +168,7 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
         case dl:
             n2 = n1+n-1;
             if(n2 < 1)
-              return;
+            return;
             //printf("%d DL %d -> %d UR %d\n",n1,n2,n2,n1);
             Serial.print("\n");
             Serial.print(n1);
@@ -185,7 +185,7 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
         case l:
             n2 = n1-1;
             if(n2 < 1)
-              return;
+            return;
             //printf("%d L %d -> %d R %d\n",n1,n2,n2,n1);
             Serial.print("\n");
             Serial.print(n1);
@@ -202,7 +202,7 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
         case ul:
             n2 = n1-n-1;
             if(n2 < 1)
-              return;
+            return;
             //printf("%d UL %d -> %d DR %d\n",n1,n2,n2,n1);
             Serial.print("\n");
             Serial.print(n1);
@@ -217,7 +217,7 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
               graph[n2][dr] = n1;
             break;
     }
-    if(n2>=1 && check_if_val_in_array(n1,n2))
+    if(check_if_val_in_array(n1,n2))
       graph[n1][direct] = n2;
     //printf("\n");
     /*for(i=0;i!=orientation;i++)

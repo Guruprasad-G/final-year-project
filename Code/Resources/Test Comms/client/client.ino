@@ -4,7 +4,7 @@ const char* ssid = "GP";
 const char* password =  "gguruprasad2018";
  
 const uint16_t port = 8090;
-const char * host = "157.45.128.223";
+const char * host = "192.168.43.123";
  
 void setup()
 {

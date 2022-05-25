@@ -23,10 +23,12 @@ int trigPin = 4;
 int echoPin = 2;
 int arr[2];
 char string[20];
-int servo_rotate[3] = {90,0,180};
 
 //Servo dummyServo1;
 Servo panServo;
+const char* ssid = "ESP32-Soft-accessPoint";
+const char* password = "itworks";
+AsyncWebServer server(80);
 
 #include "movement.h"
 #include "graph.h"          // Header file containing necessary functions to perform on Graph
@@ -52,6 +54,12 @@ void setup()
                                   // Servo Motor Pins Declaration
   //dummyServo1.attach(DUMMY_SERVO1_PIN);
   panServo.attach(PAN_PIN);
+  WiFi.softAP(ssid, password);
+  IPAddress IP = WiFi.softAPIP();
+  Serial.print("AP IP address: ");
+  Serial.println(IP);
+  Serial.print("\n");
+  server.begin();
 }
 void loop() 
 {
@@ -62,6 +70,8 @@ void loop()
   Serial.print("Current orientation = ");
   Serial.print(current_orientation);
   Serial.print("\n");
+  sprintf(string,"%d",current_node);
+  server.on("/cn", HTTP_GET, [](AsyncWebServerRequest *request){request->send_P(200, "text/plain", string);});
 
   //Rotate Pan servo 90 and get Up readings
   Serial.print("Calling Pan servo to rotate 90 degrees\n");
@@ -150,5 +160,6 @@ void loop()
   Serial.print("\n");
   
   moveCar(STOP);
+  patch_graph();
   delay(2000);
 }

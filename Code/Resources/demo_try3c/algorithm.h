@@ -9,31 +9,11 @@
     return 0;
 }*/
 
-void patch_graph()
-{
-  int i,j;
-    for(i=0;i<n*n+1;i++)
-    {
-        for(j=0;j<8;j++)
-        {
-            if(graph[i][j] > n*n)
-               graph[i][j] = 0;
-        }
-    }
-}
-
 int dfs(int current_node)
 {
     int i,backtrace_node;
     //Serial.print("CURRENT NODE ----------------- %d\n",current_node);
     visited_nodes[current_node] = 1;
-    Serial.print("Visited Array for current node -> ");
-    for(i=0;i<8;i++)
-    {
-      Serial.print(visited_nodes[graph[current_node][i]]);
-      Serial.print("\t");
-    }
-    Serial.print("\n");
     for(i=0;i<8;i++)
     {
         if(visited_nodes[graph[current_node][i]] == 0 && graph[current_node][i]!=0)
@@ -46,30 +26,18 @@ int dfs(int current_node)
             Serial.print("DFS algo is returning this value          -       ");
             Serial.print(graph[current_node][i]);
             Serial.print("\n");
-            Serial.print("Stack Pointer has this value -> ");
-            Serial.print(stack_pointer);
-            Serial.print("\n");
             return graph[current_node][i];
         }
     }
     if(stack_pointer>0)
     {
-      stack_pointer--;
-      if(stack[stack_pointer] == current_node)
-      {
-        Serial.print("Repeated value in Stack");
-        stack_pointer--;
-      }
-      Serial.print("Stack Pointer has this value -> ");
-      Serial.print(stack_pointer);
-      Serial.print("\n");
       backtrace_node = stack[stack_pointer];
-      stack[stack_pointer] = 0;
+      stack[stack_pointer--] = 0;
       Serial.print("BACKTRACE NODE ----------------->>> ");
       Serial.print(backtrace_node);
       Serial.print("\n");
       if(backtrace_node !=0)
-        return backtrace_node;
+      return backtrace_node;
     }
     else
     return -1;

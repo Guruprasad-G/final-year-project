@@ -25,30 +25,28 @@ void patch_graph()
 int dfs(int current_node)
 {
     int i,backtrace_node;
-    //Serial.print("CURRENT NODE ----------------- %d\n",current_node);
     visited_nodes[current_node] = 1;
+    
     Serial.print("Visited Array for current node -> ");
     for(i=0;i<8;i++)
     {
       Serial.print(visited_nodes[graph[current_node][i]]);
       Serial.print("\t");
     }
-    Serial.print("\n");
+    Serial.println();
+    
     for(i=0;i<8;i++)
     {
         if(visited_nodes[graph[current_node][i]] == 0 && graph[current_node][i]!=0)
         {
             stack[stack_pointer] = graph[current_node][i];
-            Serial.print("Stack has this value -> ");
-            Serial.print(stack[stack_pointer]);
-            Serial.print("\n");
+            
+            Serial.println("Stack has this value -> " + stack[stack_pointer]);
             stack_pointer++;
-            Serial.print("DFS algo is returning this value          -       ");
-            Serial.print(graph[current_node][i]);
-            Serial.print("\n");
-            Serial.print("Stack Pointer has this value -> ");
-            Serial.print(stack_pointer);
-            Serial.print("\n");
+            
+            Serial.println("DFS algo is returning this value          -       " + graph[current_node][i]);
+            Serial.println("Stack Pointer has this value -> " + stack_pointer);
+            
             return graph[current_node][i];
         }
     }
@@ -60,14 +58,22 @@ int dfs(int current_node)
         Serial.print("Repeated value in Stack");
         stack_pointer--;
       }
-      Serial.print("Stack Pointer has this value -> ");
-      Serial.print(stack_pointer);
-      Serial.print("\n");
+      Serial.println("Stack Pointer has this value -> " + stack_pointer);
+      
       backtrace_node = stack[stack_pointer];
       stack[stack_pointer] = 0;
-      Serial.print("BACKTRACE NODE ----------------->>> ");
-      Serial.print(backtrace_node);
-      Serial.print("\n");
+
+      if(backtrace_node == current_node)
+      {
+        Serial.println("Repeated value in Stack");
+        stack_pointer--;
+        Serial.println("Stack Pointer has this value -> " + stack_pointer);
+        backtrace_node = stack[stack_pointer];
+        stack[stack_pointer] = 0;
+      }
+      
+      Serial.println("BACKTRACE NODE ----------------->>> " + backtrace_node);
+      
       if(backtrace_node !=0)
         return backtrace_node;
     }
@@ -86,75 +92,73 @@ void bot_movement(int direct)
     switch(direct)
     {
         case u:
-            Serial.print("Moving UP\n");
+            Serial.println("Moving UP");
             moveCar(UP);
             break;
         case ur:
-            Serial.print("Moving RIGHT for UR\n");
+            Serial.println("Moving RIGHT for UR");
             moveCar(RIGHT);
-            Serial.print("Moving UP for UR\n");
+            Serial.println("Moving UP for UR");
             moveCar(UP);
             break;
         case r:
-            Serial.print("Moving RIGHT for R\n");
+            Serial.println("Moving RIGHT for R");
             moveCar(RIGHT);
             moveCar(RIGHT);
-            //moveCar(RIGHT);
-            //moveCar(RIGHT);
-            Serial.print("Moving UP for R\n");
+            Serial.println("Moving UP for R");
             moveCar(UP);
             break;
         case dr:
-            Serial.print("Moving RIGHT for DR\n");
+            Serial.println("Moving RIGHT for DR");
             moveCar(RIGHT);
             moveCar(RIGHT);
             moveCar(RIGHT);
-            Serial.print("Moving UP for DR\n");
+            Serial.println("Moving UP for DR");
             moveCar(UP);
             break;
         case d:
             if(counter==0)
             {
-              Serial.print("Moving RIGHT for D\n");
+              Serial.println("Moving RIGHT for D");
               moveCar(RIGHT);
               moveCar(RIGHT);
               moveCar(RIGHT);
               moveCar(RIGHT);
-              Serial.print("Moving UP for D\n");
+              Serial.println("Moving UP for D");
               moveCar(UP);
               counter = 1;
             }
             else
             {
-              Serial.print("Moving LEFT for D\n");
+              Serial.println("Moving LEFT for D");
               moveCar(LEFT);
               moveCar(LEFT);
               moveCar(LEFT);
               moveCar(LEFT);
-              Serial.print("Moving UP for D\n");
+              Serial.println("Moving UP for D");
               moveCar(UP);
               counter = 0;
             }
             break;
         case dl:
-            Serial.print("Moving LEFT for DL\n");
+            Serial.println("Moving LEFT for DL");
             moveCar(LEFT);
             moveCar(LEFT);
             moveCar(LEFT);
-            Serial.print("Moving UP for DL\n");
+            Serial.println("Moving UP for DL");
             moveCar(UP);
             break;
         case l:
-            Serial.print("Moving LEFT for L\n");
+            Serial.println("Moving LEFT for L");
             moveCar(LEFT);
             moveCar(LEFT);
-            Serial.print("Moving UP for L\n");
+            Serial.println("Moving UP for L");
             moveCar(UP);
             break;
         case ul:
-            Serial.print("Moving LEFT for UL\n");
+            Serial.println("Moving LEFT for UL");
             moveCar(LEFT);
-            Serial.print("Moving UP for UL\n");
+            Serial.println("Moving UP for UL");
             moveCar(UP);
             break;
     }
@@ -166,7 +170,8 @@ void next_node_movement(int current_node, int orientation, int arr[])
     if(next_node==-1)
     {
       bot_movement(-1);
-      Serial.print("Robot completely surrounded or Robot returned to Home node!! END OF RUN!!");
+      Serial.println("Robot completely surrounded or Robot returned to Home node!! END OF RUN!!");
+      return ;
     }
     int directions_arr[] = {u,ur,r,dr,d,dl,l,ul};
     int node_location,where_to_go;
@@ -199,20 +204,22 @@ void next_node_movement(int current_node, int orientation, int arr[])
         //printf("\nUnable to locate next node\n");
         node_location = -1;
     }
-    Serial.print("Inside bot_movement algorithm\n");
+    
+    Serial.println("Inside bot_movement algorithm");
     Serial.print("Dirrection array values -> ");
     for(i=0;i<8;i++)
     {
       Serial.print(directions_arr[i]);
       Serial.print("  ");
     }
-    Serial.print("\n");
+    Serial.println();
+    
     where_to_go = directions_arr[node_location];
-    Serial.print("Where to go next -> ");
-    Serial.print(where_to_go);
-    Serial.print("\n");
+    
+    Serial.println("Where to go next -> " + where_to_go);
+    
     bot_movement(where_to_go);
-    //bot_movement(node_location);
+    
     arr[0] = next_node;
     arr[1] = node_location;
 }

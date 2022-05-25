@@ -29,7 +29,7 @@ void print_graph()
             Serial.print(graph[i][j]);
             Serial.print("\t");
         }
-        printf("\n");
+        Serial.println();
     }
 } 
 
@@ -53,7 +53,7 @@ void rotate_array(int n1, int orientation)
       Serial.print(graph[n1][i]);
       Serial.print("  ");
     }
-    Serial.print("\n");
+    Serial.println();
   }
   previous_node = n1;
 }
@@ -85,15 +85,9 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
             if(n2 < 1)
               return;
             //printf("%d U %d -> %d D %d\n",n1,n2,n2,n1);
-            Serial.print("\n");
-            Serial.print(n1);
-            Serial.print(" U ");
-            Serial.print(n2);
+            Serial.print("\n"); Serial.print(n1); Serial.print(" U "); Serial.print(n2);
             Serial.print(" -> ");
-            Serial.print(n2);
-            Serial.print(" D ");
-            Serial.print(n1);
-            Serial.print("\n");
+            Serial.print(n2); Serial.print(" D "); Serial.print(n1); Serial.print("\n");
             if(check_if_val_in_array(n2,n1))
               graph[n2][d] = n1;
             break;
@@ -102,15 +96,9 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
             if(n2 < 1)
               return;
             //printf("%d UR %d -> %d DL %d\n",n1,n2,n2,n1);
-            Serial.print("\n");
-            Serial.print(n1);
-            Serial.print(" UR ");
-            Serial.print(n2);
+            Serial.print("\n"); Serial.print(n1); Serial.print(" UR "); Serial.print(n2);
             Serial.print(" -> ");
-            Serial.print(n2);
-            Serial.print(" DL ");
-            Serial.print(n1);
-            Serial.print("\n");
+            Serial.print(n2); Serial.print(" DL "); Serial.print(n1); Serial.print("\n");
             if(check_if_val_in_array(n2,n1))
               graph[n2][dl] = n1;
             break;
@@ -119,15 +107,9 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
             if(n2 < 1)
               return;
             //printf("%d R %d -> %d L %d\n",n1,n2,n2,n1);
-            Serial.print("\n");
-            Serial.print(n1);
-            Serial.print(" R ");
-            Serial.print(n2);
+            Serial.print("\n"); Serial.print(n1); Serial.print(" R "); Serial.print(n2);
             Serial.print(" -> ");
-            Serial.print(n2);
-            Serial.print(" L ");
-            Serial.print(n1);
-            Serial.print("\n");
+            Serial.print(n2); Serial.print(" L "); Serial.print(n1); Serial.print("\n");
             if(check_if_val_in_array(n2,n1))
               graph[n2][l] = n1;
             break;
@@ -136,15 +118,9 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
             if(n2 < 1)
               return;
             //printf("%d DR %d -> %d UL %d\n",n1,n2,n2,n1);
-            Serial.print("\n");
-            Serial.print(n1);
-            Serial.print(" DR ");
-            Serial.print(n2);
-            Serial.print(" -> ");
-            Serial.print(n2);
-            Serial.print(" UL ");
-            Serial.print(n1);
-            Serial.print("\n");
+            Serial.print("\n"); Serial.print(n1); Serial.print(" DR "); Serial.print(n2);
+            Serial.print(" -> "); 
+            Serial.print(n2); Serial.print(" UL "); Serial.print(n1); Serial.print("\n");
             if(check_if_val_in_array(n2,n1))
               graph[n2][ul] = n1;
             break;
@@ -153,15 +129,9 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
             if(n2 < 1)
               return;
             //printf("%d D %d -> %d U %d\n",n1,n2,n2,n1);
-            Serial.print("\n");
-            Serial.print(n1);
-            Serial.print(" D ");
-            Serial.print(n2);
+            Serial.print("\n"); Serial.print(n1); Serial.print(" D "); Serial.print(n2);
             Serial.print(" -> ");
-            Serial.print(n2);
-            Serial.print(" U ");
-            Serial.print(n1);
-            Serial.print("\n");
+            Serial.print(n2); Serial.print(" U "); Serial.print(n1); Serial.print("\n");
             if(check_if_val_in_array(n2,n1))
               graph[n2][u] = n1;
             break;
@@ -170,15 +140,9 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
             if(n2 < 1)
               return;
             //printf("%d DL %d -> %d UR %d\n",n1,n2,n2,n1);
-            Serial.print("\n");
-            Serial.print(n1);
-            Serial.print(" DL ");
-            Serial.print(n2);
+            Serial.print("\n"); Serial.print(n1); Serial.print(" DL "); Serial.print(n2);
             Serial.print(" -> ");
-            Serial.print(n2);
-            Serial.print(" UR ");
-            Serial.print(n1);
-            Serial.print("\n");
+            Serial.print(n2); Serial.print(" UR "); Serial.print(n1); Serial.print("\n");
             if(check_if_val_in_array(n2,n1))
               graph[n2][ur] = n1;
             break;
@@ -187,15 +151,9 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
             if(n2 < 1)
               return;
             //printf("%d L %d -> %d R %d\n",n1,n2,n2,n1);
-            Serial.print("\n");
-            Serial.print(n1);
-            Serial.print(" L ");
-            Serial.print(n2);
-            Serial.print(" -> ");
-            Serial.print(n2);
-            Serial.print(" R ");
-            Serial.print(n1);
-            Serial.print("\n");
+            Serial.print("\n"); Serial.print(n1); Serial.print(" L "); Serial.print(n2);
+            Serial.print(" -> "); 
+            Serial.print(n2); Serial.print(" R "); Serial.print(n1); Serial.print("\n");
             if(check_if_val_in_array(n2,n1))
               graph[n2][r] = n1;
             break;
@@ -204,15 +162,9 @@ void connect_node(int n1, int direct, int sensor_val, int orientation)
             if(n2 < 1)
               return;
             //printf("%d UL %d -> %d DR %d\n",n1,n2,n2,n1);
-            Serial.print("\n");
-            Serial.print(n1);
-            Serial.print(" UL ");
-            Serial.print(n2);
-            Serial.print(" -> ");
-            Serial.print(n2);
-            Serial.print(" DR ");
-            Serial.print(n1);
-            Serial.print("\n");
+            Serial.print("\n"); Serial.print(n1); Serial.print(" UL "); Serial.print(n2);
+            Serial.print(" -> "); 
+            Serial.print(n2); Serial.print(" DR "); Serial.print(n1); Serial.print("\n");
             if(check_if_val_in_array(n2,n1))
               graph[n2][dr] = n1;
             break;
@@ -350,6 +302,6 @@ void pretty_print_graph()
         {
             Serial.print(print_str[i][j]);
         }
-        Serial.print("\n");
+        Serial.println();
     }
 }
